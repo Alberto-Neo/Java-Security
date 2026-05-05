@@ -8,14 +8,12 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 @EnableWebSecurity
-
 public class SecurityConfiguration {
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity){
-        return doidera
-
+    public SecurityFilterChain securityFilterChain (HttpSecurity httpSecurity){
+        return httpSecurity.csrf(csrf -> csrf.disable())
+                .sessionManagement( session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) .build();
     }
-
 
 }
